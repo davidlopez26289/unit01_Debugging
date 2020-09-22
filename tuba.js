@@ -10,32 +10,32 @@
  *    Filename: tuba.js
  */
 
-/* global variables tracking status of each form section */
+//global variables tracking status of each form section
 var acresComplete = false;
 var cropsComplete = false;
 var monthsComplete = false;
 var fuelComplete = true;
 
-/* global variables referencing sidebar h2 and p elements */
+// global variables referencing sidebar h2 and p elements
 var messageHeadElement = document.getElementById("messageHead");
 var messageElement = document.getElementById("message");
 
-/* global variables referencing fieldset elements */
+// global variables referencing fieldset elements
 var acresFieldset = document.getElementsByTagName("fieldset")[0];
 var cropsFieldset = document.getElementsByTagName("fieldset")[1];
 var monthsFieldset = document.getElementsByTagName("fieldset")[2];
 var fuelFieldset = document.getElementsByTagName("fieldset")[3];
 
-/* global variables referencing text input elements */
+//global variables referencing text input elements 
 var monthsBox = document.forms[0].months;
 var acresBox = document.forms[0].acres;
 
-/* verify acres text box entry is a positive number */
+// verify acres text box entry is a positive number
 function verifyAcres() {
    testFormCompleteness();      
 }
 
-/* verify at least one crops checkbox is checked */
+// verify at least one crops checkbox is checked 
 function verifyCrops() {
    try {
       for (var i = 0; i < 7; i++){
@@ -56,24 +56,24 @@ function verifyCrops() {
       messageHeadElement.innerHTML = "";
       messageElement.innerHTML = message;
    }
-/* verify months text box entry is between 1 and 12 */
+// verify months text box entry is between 1 and 12 
 function verifyMonths() {
    testFormCompleteness();
 }
 
-/* verify that a fuel option button is selected */
+// verify that a fuel option button is selected 
 function verifyFuel() {
    testFormCompleteness();
 }
 
-/* check if all four form sections are completed */
+// check if all four form sections are completed 
 function testFormCompleteness() {
    if (acresComplete && cropsComplete && monthsComplete && fuelComplete) {
       createRecommendation();
    }
 }
 
-/* generate tractor recommendation based on user selections */
+// generate tractor recommendation based on user selections 
 function createRecommendation() {
    if (acresBox.value <= 5000) { // 5000 acres or less, no crop test needed
       //alert(`After the if clause: ${acresBox.value}`);
@@ -109,7 +109,7 @@ function createRecommendation() {
    }
 }
 
-/* create event listeners for all input elements */
+// create event listeners for all input elements
 function createEventListeners() {
    acresBox.value = ""; // clear acres text box on page load
    monthsBox.value = ""; // clear months text box on page load
@@ -149,9 +149,9 @@ function createEventListeners() {
    }
 }
 
-/* create event listeners when page finishes loading */
+// create event listeners when page finishes loading
 if (window.addEventListener) {
    window.addEventListener("load", createEventListeners, false);
-} else if (window.attachEvent) {
+} else if(window.attachEvent) {
    window.attachEvent("onload", createEventListeners);
 }
