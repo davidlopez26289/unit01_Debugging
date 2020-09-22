@@ -37,9 +37,9 @@ function verifyAcres() {
 
 // verify at least one crops checkbox is checked 
 function verifyCrops() {
-   try {
-      for (var i = 0; i < 7; i++){
-         if (cropsFieldset.getElementsByTagName("input")[i].checked){
+   try{
+      for(var i = 0; i < 7; i++){
+         if(cropsFieldset.getElementsByTagName("input")[i].checked){
             cropsComplete = true;
             messageElement.innerHTML = "";
             testFormCompleteness();
@@ -51,11 +51,13 @@ function verifyCrops() {
       }
    }
 
-   catch(message){
+   catch(message) {
       cropsComplete = false;
       messageHeadElement.innerHTML = "";
       messageElement.innerHTML = message;
    }
+}
+   
 // verify months text box entry is between 1 and 12 
 function verifyMonths() {
    testFormCompleteness();
